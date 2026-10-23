@@ -6,6 +6,7 @@
   <title>Simulador Oficial - Concurso de Jueces Temporales Ecuador | Consejo de la Judicatura</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="manifest" href="manifest.json">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -118,6 +119,15 @@
           Flashcards
         </button>
       </nav>
+    </div>
+  
+      <div class="flex items-center space-x-2">
+        <a href="./Compendio_Estudio_Jueces_Offline.pdf" download="Compendio_Estudio_Jueces_Offline.pdf" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg shadow flex items-center gap-1.5 transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          Descargar PDF Offline (69 págs)
+        </a>
+      </div>
+
     </div>
   </header>
 
@@ -1145,5 +1155,16 @@
       renderCurrentFlashcard();
     }
   </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').then(() => {
+          console.log('Modo Offline PWA activado correctamente.');
+        }).catch(err => console.log('SW error:', err));
+      });
+    }
+  </script>
+
 </body>
 </html>
